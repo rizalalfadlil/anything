@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BaseLayout } from "./components/baseLayout";
 import { Button, Card, Input, message } from "antd";
 import { getIntFromString } from "./util/functions";
 import { addData } from "./util/database";
