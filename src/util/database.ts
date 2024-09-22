@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.API_KEY,
+  apiKey: "AIzaSyDQAJqJyYWcvEOqhO7cBlsvlWWdeLtnqDQ",
   authDomain: "percent-afbd5.firebaseapp.com",
   projectId: "percent-afbd5",
   storageBucket: "percent-afbd5.appspot.com",
