@@ -1,7 +1,6 @@
 import { BaseLayout } from "./components/baseLayout";
-import { Button, Card, ConfigProvider, Input, Layout, Progress } from "antd";
-import React, { useEffect, useState } from "react";
-const { Content } = Layout;
+import { Button, Card, ConfigProvider, Input, Progress } from "antd";
+import { useEffect, useState } from "react";
 import "./app.css";
 import { getIntFromString } from "./util/functions";
 import { getData } from "./util/database";
@@ -12,8 +11,6 @@ export default function App() {
   const [showResult, setshowResult] = useState(false);
   const [id, setId] = useState("");
   const [title, setTitle] = useState("");
-
-  const [dataLoading, setDataLoading] = useState(false);
   const [failed, setFailed] = useState(false);
   const [algorithm, setalgorithm] = useState("");
   const [creator, setCreator] = useState({name:"",url:""})
@@ -41,7 +38,6 @@ export default function App() {
   };
   const getDataFromId = async (id: string) => {
     try {
-      setDataLoading(true);
       const result: any = await getData("tes", id);
       setTitle(result.title);
       setoptions(result.results);
@@ -49,7 +45,6 @@ export default function App() {
       setalgorithm(result.algorithm);
       setoffset(result.offset);
       setCreator({name:result.name,url:result.link})
-      setDataLoading(false);
     } catch (e) {
       setFailed(true);
       console.error("error");
