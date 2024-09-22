@@ -28,7 +28,7 @@ export function AlgorithmForm({
             <div className="text-xs">
               <p>offset</p>
               <div className="flex gap-2">
-                <Button onClick={()=>setOffset(offset > -9999 ? offset + 1 : offset)}>
+                <Button onClick={()=>setOffset(offset > -9999 ? offset - 1 : offset)}>
                   <MinusOutlined />
                 </Button>
                 <InputNumber
@@ -37,7 +37,7 @@ export function AlgorithmForm({
                   type="number"
                   value={offset}
                   max={9999}
-                  min={9999}
+                  min={-9999}
                   onChange={(e) => setOffset(e || 0)}
                 />
                 <Button onClick={()=>setOffset(offset < 9999 ? offset + 1 : offset)}><PlusOutlined/></Button>
