@@ -8,8 +8,8 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/anything/" Component={App} />
-        <Route path="/anything/create" Component={Maker} />
+        <Route path="/" Component={App} />
+        <Route path="/create" Component={Maker} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
