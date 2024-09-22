@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { BaseLayout } from "./components/baseLayout";
 import { Button, Card, Input, message } from "antd";
-import {
-  getIntFromString,
-} from "./util/functions";
+import { getIntFromString } from "./util/functions";
 import { addData } from "./util/database";
 import { Validation } from "./components/Validation";
 import { ImagesForm } from "./components/ImagesForm";
@@ -25,8 +23,8 @@ export default function Maker() {
   const [offsetInput, setOffsetInput] = useState("john doe");
 
   // 4. text results
-  const [results, setResults]:any[] = useState([]);
-//   const [results, setResults] = useState(["good", "bad"]);
+  const [results, setResults]: any[] = useState([]);
+  //   const [results, setResults] = useState(["good", "bad"]);
   const [resultInput, setresultInput] = useState("");
   const Addresult = (title: string) => {
     const newResult = [...results];
@@ -41,7 +39,7 @@ export default function Maker() {
   };
 
   // 5. images result
-  const [imgs, setImgs]:any[] = useState([
+  const [imgs, setImgs]: any[] = useState([
     // "https://picsum.photos/id/17/500/500",
     // "https://picsum.photos/id/13/200/300",
   ]);
@@ -92,7 +90,7 @@ export default function Maker() {
     });
   };
   return (
-    <BaseLayout>
+    <>
       <Card>
         {finishUrl === "" ? (
           <main className="space-y-4">
@@ -158,6 +156,6 @@ export default function Maker() {
         )}
       </Card>
       {contextHolder}
-    </BaseLayout>
+    </>
   );
 }

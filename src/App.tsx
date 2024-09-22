@@ -1,4 +1,3 @@
-import { BaseLayout } from "./components/baseLayout";
 import { Button, Card, ConfigProvider, Input, Progress } from "antd";
 import { useEffect, useState } from "react";
 import "./App.css";
@@ -13,7 +12,7 @@ export default function App() {
   const [title, setTitle] = useState("");
   const [failed, setFailed] = useState(false);
   const [algorithm, setalgorithm] = useState("");
-  const [creator, setCreator] = useState({name:"",url:""})
+  const [creator, setCreator] = useState({ name: "", url: "" });
   const [options, setoptions] = useState([
     "bad",
     "normal",
@@ -44,7 +43,7 @@ export default function App() {
       setimgs(result.imgs);
       setalgorithm(result.algorithm);
       setoffset(result.offset);
-      setCreator({name:result.name,url:result.link})
+      setCreator({ name: result.name, url: result.link });
     } catch (e) {
       setFailed(true);
       console.error("error");
@@ -84,66 +83,69 @@ export default function App() {
     }, 1000);
   };
   return (
-    <>
-      <BaseLayout>
-        <ConfigProvider theme={{ token: {} }}>
-          <div className="grid content-center h-full">
-            {failed ? (
-              <Card className="text-center">
-                <p className="text-2xl">404</p>
-                <p>data tidak ditemukan</p>
-              </Card>
-            ) : showResult ? (
-              <>
-                <Card>
-                  <div className="flex gap-4 flex-col items-center">
-                    <p className="font-bold text-lg">{text}</p>
-                    <Progress
-                      percent={number}
-                      status="normal"
-                      format={(n) => n}
-                      size={{ height: 20 }}
-                    />
-                    <p className="font-bold text-lg">{options[result()]}</p>
-                    <div
-                      className="h-40 w-40 border bg-slate-50 bg-center bg-contain bg-no-repeat"
-                      style={{ backgroundImage: `url('${imgs[imgResult()]}')` }}
-                    />
-                    <Button onClick={reset} className="w-full">
-                      reset
-                    </Button>
-                  </div>
-                </Card>
-                <Card className="mt-4">
-                  <div className="flex justify-between">
-                  <p>dibuat oleh</p>
-                  <a href={creator.url} className={`${creator.url && "border-b-blue-400 text-blue-400"}`}>{creator?.name}</a>
-                  </div>
-                </Card>
-              </>
-            ) : (
-              <Card>
-                <div className="space-y-4 text-center">
-                  <p className="font-bold text-lg">{title}</p>
-                  <Input
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    placeholder="input"
-                  />
-                  <Button
-                    type="primary"
-                    disabled={loading || text == ""}
-                    className="w-full"
-                    onClick={test}
-                  >
-                    {loading ? <LoadingOutlined spin /> : "coba"}
-                  </Button>
-                </div>
-              </Card>
-            )}
-          </div>
-        </ConfigProvider>
-      </BaseLayout>
-    </>
+    <ConfigProvider theme={{ token: {} }}>
+      <div className="grid content-center h-full">
+        {failed ? (
+          <Card className="text-center">
+            <p className="text-2xl">404</p>
+            <p>data tidak ditemukan</p>
+          </Card>
+        ) : showResult ? (
+          <>
+            <Card>
+              <div className="flex gap-4 flex-col items-center">
+                <p className="font-bold text-lg">{text}</p>
+                <Progress
+                  percent={number}
+                  status="normal"
+                  format={(n) => n}
+                  size={{ height: 20 }}
+                />
+                <p className="font-bold text-lg">{options[result()]}</p>
+                <div
+                  className="h-40 w-40 border bg-slate-50 bg-center bg-contain bg-no-repeat"
+                  style={{ backgroundImage: `url('${imgs[imgResult()]}')` }}
+                />
+                <Button onClick={reset} className="w-full">
+                  reset
+                </Button>
+              </div>
+            </Card>
+            <Card className="mt-4">
+              <div className="flex justify-between">
+                <p>dibuat oleh</p>
+                <a
+                  href={creator.url}
+                  className={`${
+                    creator.url && "border-b-blue-400 text-blue-400"
+                  }`}
+                >
+                  {creator?.name}
+                </a>
+              </div>
+            </Card>
+          </>
+        ) : (
+          <Card>
+            <div className="space-y-4 text-center">
+              <p className="font-bold text-lg">{title}</p>
+              <Input
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="input"
+              />
+              <Button
+                type="primary"
+                disabled={loading || text == ""}
+                className="w-full"
+                onClick={test}
+              >
+                {loading ? <LoadingOutlined spin /> : "coba"}
+              </Button>
+            </div>
+          </Card>
+        )}
+      </div>
+    </ConfigProvider>
   );
 }
