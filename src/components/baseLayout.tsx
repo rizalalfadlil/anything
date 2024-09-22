@@ -9,7 +9,7 @@ export function BaseLayout(props: any) {
         </div>
       </div>
       <footer className="border p-4 bg-slate-300 gap-4 flex justify-center">
-        <Button type="link" className="text-blue-800" href="/create">
+        <Button type="link" className="text-blue-800" href="create">
           buat tes mu sendiri
         </Button>
         <Button type="link" href="https://github.com/rizalalfadlil/anything" className="text-blue-800">
