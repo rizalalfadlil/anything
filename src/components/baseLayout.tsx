@@ -12,7 +12,7 @@ export function BaseLayout(props: any) {
         <Button type="link" className="text-blue-800" href="/create">
           buat tes mu sendiri
         </Button>
-        <Button type="link" className="text-blue-800">
+        <Button type="link" href="https://github.com/rizalalfadlil/anything" className="text-blue-800">
           source code
         </Button>
       </footer>
