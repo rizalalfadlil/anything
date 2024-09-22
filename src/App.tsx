@@ -1,7 +1,7 @@
 import { BaseLayout } from "./components/baseLayout";
 import { Button, Card, ConfigProvider, Input, Progress } from "antd";
 import { useEffect, useState } from "react";
-import "./app.css";
+import "./App.css";
 import { getIntFromString } from "./util/functions";
 import { getData } from "./util/database";
 import { LoadingOutlined } from "@ant-design/icons";
