@@ -84,7 +84,7 @@ export function ThemeForm({ setTheme }:{setTheme: (theme: any) => void}) {
       </div>
       <div className="space-y-2">
         <p className="text-xs">Primary Color</p>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {colors.map((color) => (
             <div
               key={color}
