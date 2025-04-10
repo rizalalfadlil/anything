@@ -53,7 +53,7 @@ export function AlgorithmForm({
                 <Button
                   onClick={() => setOffset(Math.floor(Math.random() * 100))}
                 >
-                  ?
+                  ∞
                 </Button>
               </div>
             </div>
