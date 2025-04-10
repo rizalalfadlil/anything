@@ -1,4 +1,4 @@
-import { MinusOutlined, PlusOutlined, ReloadOutlined } from "@ant-design/icons";
+import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import { Button, Input, InputNumber, Progress, Segmented, theme } from "antd";
 const { useToken } = theme;
 export function AlgorithmForm({

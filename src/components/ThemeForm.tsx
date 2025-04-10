@@ -4,7 +4,7 @@ import { useTheme } from "./baseLayout"; // Import the custom hook
 import { theme } from "antd";
 
 export function ThemeForm({ setTheme }:{setTheme: (theme: any) => void}) {
-  const { themeConfig, setThemeConfig } = useTheme();
+  const { setThemeConfig } = useTheme();
   const [backgroundColor, setBackgroundColor] = useState("dark");
   const [primaryColor, setPrimaryColor] = useState("red");
   const [radius, setRadius] = useState("0");
