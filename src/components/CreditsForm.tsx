@@ -4,7 +4,7 @@ import { Input } from "antd";
 export function CreditsForm({ name, setName, link, setLink }: any) {
     return (
         <div className="space-y-2">
-            <p className="font-medium">credits</p>
+            <p className="font-medium">Credits</p>
             <div>
                 <p className="text-xs">nama</p>
                 <Input

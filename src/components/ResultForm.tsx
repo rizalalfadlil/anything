@@ -11,7 +11,7 @@ export function ResultForm({
 }: any) {
   return (
     <div className="space-y-2">
-      <p className="font-medium">list hasil</p>
+      <p className="font-medium">List Hasil</p>
       {results.map((r: any, i: number) => (
         <Tag key={i} onClick={() => deleteResult(i)}>{`${r} (${(
           (100 / results.length) * i +

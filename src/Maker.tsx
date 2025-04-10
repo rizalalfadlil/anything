@@ -8,14 +8,16 @@ import { ResultForm } from "./components/ResultForm";
 import { AlgorithmForm } from "./components/AlgorithmForm";
 import { CreditsForm } from "./components/CreditsForm";
 import { ResultScreen } from "./components/ResultScreen";
+import { ThemeForm } from "./components/ThemeForm";
 
 export default function Maker() {
+  document.title = "buat tes";
   const [messageApi, contextHolder] = message.useMessage();
   // 1. title
   const [title, setTitle] = useState("");
 
   // 2. algorithm
-  const [algorithm, setAlgorithm] = useState("string based");
+  const [algorithm, setAlgorithm] = useState("konversi huruf ke angka");
 
   // 3. offset
   const [offset, setOffset] = useState(0);
@@ -55,6 +57,11 @@ export default function Maker() {
     });
   };
 
+  const [theme, setTheme] = useState({
+    backgroundColor: "dark",
+    primaryColor: "red",
+    radius: "0px",
+  });
   //credits
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
@@ -70,6 +77,7 @@ export default function Maker() {
       imgs,
       name,
       link,
+      theme,
     };
 
     addData("tes", data)
@@ -95,7 +103,7 @@ export default function Maker() {
           <main className="space-y-4">
             <p className="text-lg font-bold">buat tes</p>
             <div className="space-y-2">
-              <p className="font-medium">judul</p>
+              <p className="font-medium">Judul</p>
               <Input
                 value={title}
                 placeholder="seberapa ... kamu"
@@ -103,6 +111,7 @@ export default function Maker() {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
+            <hr className="border-slate-50/50" />
             <AlgorithmForm
               algorithm={algorithm}
               setAlgorithm={setAlgorithm}
@@ -112,6 +121,7 @@ export default function Maker() {
               offsetInput={offsetInput}
               setOffsetInput={setOffsetInput}
             />
+            <hr className="border-slate-50/50" />
             <ResultForm
               deleteResult={deleteResult}
               resultInput={resultInput}
@@ -132,6 +142,8 @@ export default function Maker() {
               link={link}
               setLink={setLink}
             />
+            <hr className="border-slate-50/50" />
+            <ThemeForm setTheme={setTheme} />
             <Validation
               title={title}
               algorithm={algorithm}

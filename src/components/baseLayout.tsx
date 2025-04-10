@@ -1,21 +1,43 @@
-import { Button } from "antd";
+import React, { createContext, useState, useContext } from "react";
+import { Button, ConfigProvider, theme } from "antd";
+const ThemeContext = createContext<any>(null);
 
-export function BaseLayout(props: any) {
+export function BaseLayout({ children }: { children: React.ReactNode }) {
+  const [themeConfig, setThemeConfig] = useState({
+    algorithm: theme.darkAlgorithm,
+    token: {
+      colorPrimary: "red",
+      borderRadius: 0,
+    },
+  });
+  const bgColor =
+    themeConfig.algorithm === theme.darkAlgorithm
+      ? ["#222222", "#1e1e1e"]
+      : ["#f8f8f8", "#eeeeee"];
+  const textColor =
+    themeConfig.algorithm === theme.darkAlgorithm ? "#ffffff" : "#000000";
   return (
-    <main className=" h-screen flex flex-col space-y-4 w-screen">
-      <div className="grow p-4 md:px-40 lg:px-60 xl:px-80">
-        <div className="2xl:px-80 h-full">
-        {props.children}
-        </div>
-      </div>
-      <footer className="border p-4 bg-slate-300 gap-4 flex justify-center">
-        <Button type="link" className="text-blue-800" href="create">
-          buat tes mu sendiri
-        </Button>
-        <Button type="link" href="https://github.com/rizalalfadlil/anything" className="text-blue-800">
-          source code
-        </Button>
-      </footer>
-    </main>
+    <ThemeContext.Provider value={{ themeConfig, setThemeConfig }}>
+      <ConfigProvider theme={themeConfig}>
+        <main
+          className="min-h-dvh flex flex-col w-screen"
+          style={{ backgroundColor: bgColor[0] }}
+        >
+          <div className="grow p-4 grid content-center">
+            <div className=" max-w-xl mx-auto w-full">{children}</div>
+          </div>
+          <footer
+            className="p-4  gap-4 flex justify-center"
+            style={{ backgroundColor: bgColor[1], color: textColor }}
+          >
+            <Button type="link" href="create">
+              buat tes mu sendiri
+            </Button>
+          </footer>
+        </main>
+      </ConfigProvider>
+    </ThemeContext.Provider>
   );
 }
+
+export const useTheme = () => useContext(ThemeContext);

@@ -6,13 +6,13 @@ export function Validation({
 }: any) {
     return (
         <div className="space-y-2">
-            <p className="font-medium">validasi</p>
+            <p className="font-medium">Validasi</p>
             {title === "" && (
                 <Alert message="judul tidak boleh kosong" showIcon type="error" />
             )}
-            {algorithm === "string based" ? offset == 0 && (
+            {algorithm === "konversi huruf ke angka" ? offset == 0 && (
                 <>
-                <Alert message="algoritma string based, hasil akan selalu sama jika nama yang di inputkan sama" type="info" showIcon closable/>
+                <Alert message="algoritma konversi huruf ke angka, hasil akan selalu sama jika nama yang di inputkan sama" type="info" showIcon closable/>
                 <Alert
                     message="offset 0, mungkin bakal sama dengan orang lain"
                     showIcon

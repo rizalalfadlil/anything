@@ -10,7 +10,7 @@ export function ImagesForm({
 }: any) {
     return (
         <div className="space-y-2">
-            <p className="font-medium">images</p>
+            <p className="font-medium">Gambar</p>
             <div className="flex flex-wrap gap-2">
                 {imgs.map((m: string | undefined, i: number) => (
                     <div key={i}>

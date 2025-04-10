@@ -1,11 +1,13 @@
-import { Button, Card, ConfigProvider, Input, Progress } from "antd";
+import { Button, Card, ConfigProvider, Input, Progress, theme } from "antd";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { getIntFromString } from "./util/functions";
 import { getData } from "./util/database";
 import { LoadingOutlined } from "@ant-design/icons";
+import { useTheme } from "./components/baseLayout";
 
 export default function App() {
+  const { themeConfig, setThemeConfig } = useTheme();
   const [text, setText] = useState("");
   const [showResult, setshowResult] = useState(false);
   const [id, setId] = useState("");
@@ -29,6 +31,11 @@ export default function App() {
     getParamsData();
   }, []);
 
+  useEffect(() => {
+    // Update the document title whenever the title state changes
+    document.title = title ? `${title}` : "tanpa judul";
+  }, [title]);
+
   const getParamsData = async () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -44,6 +51,18 @@ export default function App() {
       setalgorithm(result.algorithm);
       setoffset(result.offset);
       setCreator({ name: result.name, url: result.link });
+      setThemeConfig((prev: any) => ({
+        ...prev,
+        token: {
+          ...prev.token,
+          colorPrimary: result.theme.primaryColor,
+          borderRadius: result.theme.radius,
+        },
+        algorithm:
+          result.theme.backgroundColor === "dark"
+            ? theme.darkAlgorithm
+            : theme.defaultAlgorithm,
+      }));
     } catch (e) {
       setFailed(true);
       console.error("error");
@@ -70,7 +89,7 @@ export default function App() {
   }
   const test = () => {
     const value =
-      algorithm === "string based"
+      algorithm === "konversi huruf ke angka"
         ? getIntFromString(text, offset)
         : (Math.random() * 100).toFixed(0);
     setloading(true);
@@ -84,7 +103,7 @@ export default function App() {
   };
   return (
     <ConfigProvider theme={{ token: {} }}>
-      <div className="grid content-center h-full">
+      <div className="grid h-full">
         {failed ? (
           <Card className="text-center">
             <p className="text-2xl">404</p>
@@ -99,6 +118,10 @@ export default function App() {
                   percent={number}
                   status="normal"
                   format={(n) => n}
+                  strokeLinecap={
+                    themeConfig.token.borderRadius === 0 ? "square" : "round"
+                  }
+                  strokeColor={themeConfig.token.colorPrimary}
                   size={{ height: 20 }}
                 />
                 <p className="font-bold text-lg">{options[result()]}</p>
@@ -106,7 +129,7 @@ export default function App() {
                   className="h-40 w-40 border bg-slate-50 bg-center bg-contain bg-no-repeat"
                   style={{ backgroundImage: `url('${imgs[imgResult()]}')` }}
                 />
-                <Button onClick={reset} className="w-full">
+                <Button onClick={reset} className="w-full" type="primary">
                   reset
                 </Button>
               </div>

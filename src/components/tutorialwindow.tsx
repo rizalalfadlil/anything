@@ -9,7 +9,7 @@ export default function Tutorialwindow() {
       <Button onClick={() => setOpen(true)} ><InfoCircleOutlined /></Button>
       <Modal
         centered
-        title="cara menambahkan url gambar (karena saya malas menambahkan input file 🗿)"
+        title="cara menambahkan url gambar"
         onClose={() => setOpen(false)}
         onCancel={() => setOpen(false)}
         open={open}
